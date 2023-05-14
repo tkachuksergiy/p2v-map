@@ -1,9 +1,6 @@
 import os
-
-from loguru import logger
-from utils import log_gpu_memory
-
 import numpy as np
+from loguru import logger
 
 import torch
 import torch.nn as nn
@@ -11,7 +8,14 @@ import torch.nn.functional as F
 import torch.optim
 import torch.utils.tensorboard
 
-class P2V(torch.nn.Module):
+def log_gpu_memory(logger):
+    device = torch.device('cuda:0')
+    allocated = torch.cuda.memory_allocated(device) / (1024 ** 2)  # Convert bytes to MB
+    cached = torch.cuda.memory_reserved(device) / (1024 ** 2)  # Convert bytes to MB
+    logger.info(f"GPU memory allocated: {allocated:.2f} MB")
+    logger.info(f"GPU memory cached: {cached:.2f} MB")
+
+class P2V(nn.Module):
     def __init__(self, n_products, size, device):
         super().__init__()
         self.device = device
