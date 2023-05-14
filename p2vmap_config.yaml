@@ -8,7 +8,7 @@ data:
     data_streamer:
         variable_basket: basket
         variable_product: product
-        batch_size: 20000
+        batch_size: 50000
         n_negative_samples: 10
         power: 0.75
         shuffle: False
@@ -19,11 +19,11 @@ p2v:
     data-loader:
         validation_size: 0.05
         config_train:
-            batch_size: 1024
+            batch_size: 51200
             shuffle: True
             drop_last: True
         config_validation:
-            batch_size: 4096
+            batch_size: 204800
             shuffle: False
             drop_last: False
     model:
