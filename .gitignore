@@ -8,7 +8,7 @@
 results
 
 # image files
-*.png
+#*.png
 *.jpg
 *.pdf
 *.gif
