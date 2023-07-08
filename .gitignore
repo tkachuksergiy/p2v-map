@@ -6,6 +6,7 @@
 *.tsv
 *.npy
 results
+data/jm/*
 
 # image files
 #*.png
